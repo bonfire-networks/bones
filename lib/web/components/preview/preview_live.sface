@@ -5,13 +5,16 @@
     <LinkLive class="font-semibold text-lg underline" to={@permalink}>
       {e(@object, :post_content, :name, "No Title")}
     </LinkLive>
-    <Bonfire.UI.Social.Activity.LinkToActivityLive permalink={@permalink}>
-    <Bonfire.UI.Social.Activity.DateAgoLive
+    <StatelessComponent
+      module={maybe_component(Bonfire.UI.Social.Activity.LinkToActivityLive)}
+      permalink={@permalink}>
+    <StatelessComponent
+      module={maybe_component(Bonfire.UI.Social.Activity.DateAgoLive)}
       date_ago={@date_ago}
       activity_id={id(@activity)}
-        object_id={id(@object)}
-      />
-    </Bonfire.UI.Social.Activity.LinkToActivityLive>
+      object_id={id(@object)}
+    />
+    </StatelessComponent>
     <div class="prose prose-sm line-clamp-3 prose-sm">
       {e(@object, :post_content, :html_body, "No description")}
     </div> 
