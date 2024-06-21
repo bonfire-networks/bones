@@ -1,0 +1,19 @@
+<article class="flex py-6 gap-8 items-top">
+  <img src={e(@object, :post_content, :media, [])} class="w-[160px] h-[160px] rounded-lg" />
+  
+  <div class="flex flex-col gap-1">
+    <LinkLive class="font-semibold text-lg underline" to={@permalink}>
+      {e(@object, :post_content, :name, "No Title")}
+    </LinkLive>
+    <Bonfire.UI.Social.Activity.LinkToActivityLive permalink={@permalink}>
+    <Bonfire.UI.Social.Activity.DateAgoLive
+      date_ago={@date_ago}
+      activity_id={id(@activity)}
+        object_id={id(@object)}
+      />
+    </Bonfire.UI.Social.Activity.LinkToActivityLive>
+    <div class="prose prose-sm line-clamp-3 prose-sm">
+      {e(@object, :post_content, :html_body, "No description")}
+    </div> 
+  </div>
+</article>

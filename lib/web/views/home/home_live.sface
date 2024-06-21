@@ -1,0 +1,20 @@
+<div class="flex flex-col w-full">
+  
+  <div class="flex mt-24 flex-col max-w-screen-sm gap-12">
+    <h1 class="text-4xl font-semibold">{Config.get([:ui, :theme, :instance_welcome, :title], "Welcome to #{Config.get([:ui, :theme, :instance_name], "Bonfire")}")}</h1>
+    <h2 class="prose max-w-max">{templated_or_remote_markdown(Config.get([:ui, :theme, :instance_welcome, :description], ""))}</h2>
+  </div>
+
+  <div class="border-t border-base-content/10 mt-16">
+    <StatefulComponent
+      module={maybe_component(Bonfire.UI.Social.FeedLive, @__context__)}
+      id={ComponentID.new(Bonfire.UI.Social.FeedLive, e(@feed_id, :local), __MODULE__)}
+      feed_id={@feed_id}
+      feed={@feed}
+      page_info={@page_info}
+      loading={@loading}
+      hide_tabs
+      custom_preview={Bones.PreviewLive}
+    />
+  </div>
+</div>

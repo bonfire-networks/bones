@@ -1,0 +1,53 @@
+<div
+  data-id="bonfire_live"
+  class="antialiased bg-base-200"
+  data-theme={if Settings.get(
+       [:ui, :theme, :preferred],
+       :system,
+       assigns[:__context__] || assigns[:current_user] || @conn
+     ) == :light,
+     do:
+       Settings.get(
+         [:ui, :theme, :instance_theme_light],
+         "light",
+         assigns[:__context__] || assigns[:current_user] || @conn
+       ),
+     else:
+       Settings.get(
+         [:ui, :theme, :instance_theme],
+         "bonfire",
+         assigns[:__context__] || assigns[:current_user] || @conn
+       )}
+
+  
+>
+  <div
+    data-id="layout"
+    class=""
+  >
+    
+    
+    <Bones.HeaderLive />
+    <div class="relative max-w-screen-lg mx-auto">
+      <div class="justify-between h-full mt-0">
+        <div class="relative invisible_frame">
+          <div class="md:pb-0 md:overflow-y-visible">
+            <Bonfire.UI.Common.PreviewContentLive id="preview_content" />
+            <div
+              id="inner"
+              class=""
+            >
+              <main>
+                {@inner_content}
+              </main>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+</div>
+<Bonfire.UI.Common.ReusableModalLive id="modal" />
+<Bonfire.UI.Common.NotificationLive id={:notification} root_flash={@flash} />

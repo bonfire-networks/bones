@@ -1,30 +1,33 @@
 defmodule Bones.Web.AboutLive do
   use Bonfire.UI.Common.Web, :surface_live_view
 
-  declare_nav_link(l("About"),
-    page: "About",
-    href: "/bones/about",
-    icon: "typcn:info-large"
-  )
-
-  on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
-
   def mount(_params, _session, socket) do
+    {title, %{page_info: page_info, edges: edges}} =
+      Bonfire.UI.Me.UsersDirectoryLive.list_users([], [], nil)
+
     {:ok,
      assign(
        socket,
        page: "About",
-       page_title: "About the extension",
-       nav_items: Bonfire.Common.ExtensionModule.default_nav(:bones)
+       page_title: "About",
+       users: edges,
+       page_info: page_info
+       ),
+     layout: {Bones.LayoutLive, :live}}
+  end
+
+  def handle_event("load_more", attrs, socket) do
+    {title, %{page_info: page_info, edges: edges}} =
+      Bonfire.UI.Me.UsersDirectoryLive.list_users(current_user(socket.assigns), attrs, e(socket.assigns, :instance_id, nil))
+
+    {:noreply,
+     socket
+     |> assign(
+       loaded: true,
+       users: e(socket.assigns, :users, []) ++ edges,
+       page_info: page_info
      )}
   end
 
-  def handle_event(
-        "custom_event",
-        _attrs,
-        socket
-      ) do
-    # handle the event here
-    {:noreply, socket}
-  end
+
 end

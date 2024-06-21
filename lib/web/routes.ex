@@ -6,9 +6,12 @@ defmodule Bones.Web.Routes do
       # pages anyone can view
       scope "/bones/", Bones.Web do
         pipe_through(:browser)
-
-        live("/", HomeLive)
-        live("/about", AboutLive)
+        # pipe_through(:blog)
+        # live_session :default, root_layout: "root.html.heex" do
+          live("/", HomeLive)
+          live("/about", AboutLive)
+          live("/post/:id", PostLive, as: Needle.Pointer)
+          # end
       end
 
       # pages only guests can view
@@ -27,6 +30,7 @@ defmodule Bones.Web.Routes do
       scope "/bones/", Bones.Web do
         pipe_through(:browser)
         pipe_through(:user_required)
+        live("/settings", SettingsLive)
       end
 
       # pages only admins can view

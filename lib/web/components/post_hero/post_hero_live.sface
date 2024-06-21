@@ -1,0 +1,24 @@
+<article class="flex flex-col gap-8 pb-8 items-top">
+  <h1 class="text-5xl font-bold">{e(@object, :post_content, :name, "No Title")}</h1>
+  <div class="py-2 border-b border-base-content/10 border-t">            
+  <Bonfire.UI.Social.Activity.SubjectLive
+    activity={@activity}
+    viewing_main_object
+    date_ago={DatesTimes.date_from_now(id(@object), format: :MMM_d_yyyy)}
+    object={@object}
+    activity_component_id={@main_object_component_id}
+    profile={e(@activity, :subject, :profile, nil)}
+    character={e(@activity, :subject, :character, nil)}
+  />
+
+  </div>
+  <div class="prose">
+    {rich(e(@object, :post_content, :html_body, "No description"))}
+  </div>
+  <Bonfire.UI.Social.Activity.ActionsLive
+    activity={@activity}
+    object={@object}
+    activity_component_id={@main_object_component_id}
+    id={@main_object_component_id}
+  />
+</article>
