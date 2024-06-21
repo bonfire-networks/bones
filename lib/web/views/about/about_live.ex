@@ -12,13 +12,16 @@ defmodule Bones.Web.AboutLive do
        page_title: "About",
        users: edges,
        page_info: page_info
-       ),
-     layout: {Bones.LayoutLive, :live}}
+     ), layout: {Bones.LayoutLive, :live}}
   end
 
   def handle_event("load_more", attrs, socket) do
     {title, %{page_info: page_info, edges: edges}} =
-      Bonfire.UI.Me.UsersDirectoryLive.list_users(current_user(socket.assigns), attrs, e(socket.assigns, :instance_id, nil))
+      Bonfire.UI.Me.UsersDirectoryLive.list_users(
+        current_user(socket.assigns),
+        attrs,
+        e(socket.assigns, :instance_id, nil)
+      )
 
     {:noreply,
      socket
@@ -28,6 +31,4 @@ defmodule Bones.Web.AboutLive do
        page_info: page_info
      )}
   end
-
-
 end

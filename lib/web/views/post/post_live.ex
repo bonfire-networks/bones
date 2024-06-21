@@ -24,9 +24,7 @@ defmodule Bones.Web.PostLive do
        thread_mode: maybe_to_atom(e(params, "mode", nil)),
        loading: false,
        nav_items: Bonfire.Common.ExtensionModule.default_nav()
-     ),
-     layout: {Bones.LayoutLive, :live}
-    }
+     ), layout: {Bones.LayoutLive, :live}}
   end
 
   def handle_params(%{"id" => id} = params, _url, socket) when is_binary(id) do

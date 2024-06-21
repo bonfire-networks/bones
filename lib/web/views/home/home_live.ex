@@ -9,19 +9,17 @@ defmodule Bones.Web.HomeLive do
 
   def mount(_params, _session, socket) do
     {:ok,
-    socket
-    |> assign(
-      page: "Home",
-      selected_tab: "Home",
-      #  without_sidebar: true,
-      back: true,
-      page_title: l("Home"),
-      feed_id: :local,
-      feed: nil,
-      loading: false,
-      page_info: nil
-      ),
-      layout: {Bones.LayoutLive, :live}
-    }
+     socket
+     |> assign(
+       page: "Home",
+       selected_tab: "Home",
+       #  without_sidebar: true,
+       back: true,
+       page_title: l("Home"),
+       feed_id: :local,
+       feed: nil,
+       loading: false,
+       page_info: nil
+     ), layout: {Bones.LayoutLive, :live}}
   end
 end

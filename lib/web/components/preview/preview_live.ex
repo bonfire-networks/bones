@@ -15,6 +15,4 @@ defmodule Bones.PreviewLive do
     IO.inspect(assigns, label: "CCCCCCA2")
     {:ok, socket}
   end
-
-
 end

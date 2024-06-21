@@ -18,25 +18,15 @@
          "bonfire",
          assigns[:__context__] || assigns[:current_user] || @conn
        )}
-
-  
 >
-  <div
-    data-id="layout"
-    class=""
-  >
-    
-    
+  <div data-id="layout" class="">
     <Bones.HeaderLive />
     <div class="relative max-w-screen-lg mx-auto">
       <div class="justify-between h-full mt-0">
         <div class="relative invisible_frame">
           <div class="md:pb-0 md:overflow-y-visible">
             <Bonfire.UI.Common.PreviewContentLive id="preview_content" />
-            <div
-              id="inner"
-              class=""
-            >
+            <div id="inner" class="">
               <main>
                 {@inner_content}
               </main>
@@ -45,9 +35,7 @@
         </div>
       </div>
     </div>
-    
   </div>
-
 </div>
 <Bonfire.UI.Common.ReusableModalLive id="modal" />
 <Bonfire.UI.Common.NotificationLive id={:notification} root_flash={@flash} />

@@ -18,22 +18,21 @@
     <LinkLive to={~p"/"} class="btn btn-ghost text-2xl">{Config.get([:ui, :theme, :instance_name], Bonfire.Application.name())}</LinkLive>
   </div>
   <div class="navbar-end gap-4">
-
-  {#if is_map(current_user(@__context__))}
+    {#if is_map(current_user(@__context__))}
       <LinkLive to={~p"/write"} class="btn btn-primary btn-sm">
-        {l "Write"}
+        {l("Write")}
       </LinkLive>
       <LinkLive to={~p"/notifications"} class="btn btn-sm btn-ghost btn-circle">
         <#Icon iconify="carbon:notification" class="w-5 h-5" />
       </LinkLive>
-    <LinkLive to={~p"/profile"} class="btn btn-ghost btn-sm btn-circle">
-     <Bonfire.UI.Common.AvatarLive
-      parent_id="nav_sidebar"
-      class="inline-block object-cover w-[24px] h-[24px] rounded-full"
-      src={Media.avatar_url(current_user(@__context__))}
-      user_id={current_user_id(@__context__)}
-    />
-    </LinkLive>
+      <LinkLive to={~p"/profile"} class="btn btn-ghost btn-sm btn-circle">
+        <Bonfire.UI.Common.AvatarLive
+          parent_id="nav_sidebar"
+          class="inline-block object-cover w-[24px] h-[24px] rounded-full"
+          src={Media.avatar_url(current_user(@__context__))}
+          user_id={current_user_id(@__context__)}
+        />
+      </LinkLive>
       <div data-position="top-end" phx-hook="Tooltip" id="bones_menu_links" class="relative">
         <label
           class="tooltip-button btn btn-xs btn-circle btn-outline"
@@ -55,22 +54,22 @@
           <Bonfire.UI.Common.UserMenuLinksLive />
         </ul>
       </div>
-    
-  {#else}
-  
+    {#else}
       <LinkLive class="btn btn-sm btn-ghost font-normal" to={~p"/bones/about"}>
-        {l "About"}
+        {l("About")}
       </LinkLive>
       <StatefulComponent
         module={maybe_component(Bonfire.UI.Social.Graph.FollowButtonLive, @__context__)}
-        id={ComponentID.new(Bonfire.UI.Social.Graph.FollowButtonLive, current_user_id(@__context__), __MODULE__)}
+        id={ComponentID.new(
+          Bonfire.UI.Social.Graph.FollowButtonLive,
+          current_user_id(@__context__),
+          __MODULE__
+        )}
         object_id={current_user_id(@__context__)}
         path={path(e(current_user(@__context__), :profile, :character, nil))}
         hide_icon
         class="btn btn-sm btn-outline"
       />
-   
-  {/if}
-
+    {/if}
   </div>
 </header>

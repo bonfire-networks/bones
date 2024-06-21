@@ -8,10 +8,10 @@ defmodule Bones.Web.Routes do
         pipe_through(:browser)
         # pipe_through(:blog)
         # live_session :default, root_layout: "root.html.heex" do
-          live("/", HomeLive)
-          live("/about", AboutLive)
-          live("/post/:id", PostLive, as: Needle.Pointer)
-          # end
+        live("/", HomeLive)
+        live("/about", AboutLive)
+        live("/post/:id", PostLive, as: Needle.Pointer)
+        # end
       end
 
       # pages only guests can view

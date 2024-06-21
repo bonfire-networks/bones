@@ -1,5 +1,5 @@
 <div class="pt-8">
-    <StatelessComponent
+  <StatelessComponent
     module={maybe_component(Bonfire.UI.Social.ObjectThreadLive)}
     myself={nil}
     thread_title={@thread_title}
@@ -10,5 +10,5 @@
     thread_id={e(@thread_id, nil)}
     participants={@participants}
     custom_preview={Bones.PostHeroLive}
-    />
+  />
 </div>
