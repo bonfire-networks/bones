@@ -12,7 +12,6 @@ defmodule Bones.PreviewLive do
   end
 
   def update(assigns, socket) do
-    IO.inspect(assigns, label: "CCCCCCA2")
     {:ok, socket}
   end
 end
