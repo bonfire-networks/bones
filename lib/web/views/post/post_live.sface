@@ -8,6 +8,7 @@
     object={@object}
     post_id={@post_id}
     thread_id={e(@thread_id, nil)}
+    showing_within={:thread}
     participants={@participants}
     custom_preview={Bones.PostHeroLive}
   />
